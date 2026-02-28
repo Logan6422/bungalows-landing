@@ -5,20 +5,19 @@ import img2 from "../assets/2.webp"
 import img3 from "../assets/3.webp"
 ---
 
-
 <section class="gallery-section" id="nosotros">
-    <section class="gallery-intro">
+  <section class="gallery-intro">
     <div class="intro-content">
-        <h2>
+      <h2>
         UN REFUGIO PENSADO<br />
         <span>PARA CADA MOMENTO</span>
-        </h2>
-        <p>
+      </h2>
+      <p>
         Desde amaneceres frente al río hasta tardes de pesca y descanso,
         cada detalle está diseñado para que vivas una estadía única.
-        </p>
+      </p>
     </div>
-    </section>
+  </section>
 
   <div class="gallery-item" id="servicios">
     <div class="gallery-text">
@@ -28,7 +27,6 @@ import img3 from "../assets/3.webp"
         cada detalle está diseñado para que vivas una estadía única.
       </p>
     </div>
-
     <div class="gallery-image">
       <Image src={img1} alt="Desconectar" class="gallery-img" />
     </div>
@@ -42,7 +40,6 @@ import img3 from "../assets/3.webp"
         que invita a relajarse y reconectar.
       </p>
     </div>
-
     <div class="gallery-image">
       <Image src={img2} alt="Compartir" class="gallery-img" />
     </div>
@@ -56,163 +53,195 @@ import img3 from "../assets/3.webp"
         como banda sonora de tu estadía.
       </p>
     </div>
-
     <div class="gallery-image">
       <Image src={img3} alt="Descansar" class="gallery-img" />
     </div>
   </div>
-
 </section>
 
 <style>
-
-/* GALLERY SECTION */
-.gallery-section {
-  width: 100%;
-  padding: 8rem 6vw;
-  display: flex;
-  flex-direction: column;
-  gap: 8rem;
-  background: #6A8E72
-}
-
-.gallery-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6rem;
-  border-right: 2.5px solid #3E2A1F;
-  border-left: 2.5px solid #3E2A1F;
-}
-
-.gallery-item.reverse {
-  flex-direction: row-reverse;
-}
-
-/* TEXT */
-.gallery-text {
-  flex: 0 0 420px;
-}
-
-.gallery-text h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  margin-bottom: 1.2rem;
-  font-weight: 400;
- color: #3E2A1F;
-}
-
-.gallery-text h3 span {
-  display: block;
-  font-size: 2.6rem;
-  font-weight: 600;
-  color: #6A8E72;
-}
-
-.gallery-text p {
-  font-size: 1.2rem;
-  line-height: 2rem;
-  color: #F5F3EE;
-}
-
-/* IMAGE CONTAINER */
-.gallery-image {
-  flex: 0 0 520px;
-  display: flex;
-  justify-content: center;
-}
-
-.gallery-img:hover {
-  transform: scale(1.04);
-  box-shadow: 0 30px 70px rgba(0,0,0,0.15);
-}
-
-/* IMAGE STYLE */
-.gallery-img {
-  width: 100%;
-  max-width: 520px;
-  aspect-ratio: 16 / 10; /* más horizontal */
-  object-fit: cover;
-  border-radius: 18px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-  transition: transform 0.6s ease, box-shadow 0.6s ease;
-}
-
-/* INTRO SEPARATOR */
-.gallery-intro {
-  background: linear-gradient(
-    180deg,
-    #6A8E72 0%,
-    #7FA38A 100%
-  );
-  padding: 0rem 2rem 6rem 2rem;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-.intro-content {
-  max-width: 900px;
-}
-
-.gallery-intro h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
-  font-weight: 400;
-  line-height: 1.2;
-  color: #F5F3EE;
-  margin-bottom: 2rem;
-  letter-spacing: 1px;
-}
-
-.gallery-intro h2 span {
-  display: block;
-  font-weight: 600;
-  color: #3E2A1F;
-}
-
-.gallery-intro p {
-  font-size: 1.2rem;
-  line-height: 2rem;
-  color: #F5F3EE;
-  opacity: 0.9;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-/* RESPONSIVE */
-@media (max-width: 1000px) {
-    .gallery-intro {
-        padding: 6rem 1.5rem 4rem 1.5rem;
-    }
-
-    .gallery-intro h2 {
-        font-size: 2.2rem;
-    }
-
-    .gallery-intro p {
-        font-size: 1rem;
-    }
-  .gallery-item,
-  .gallery-item.reverse {
+  /* GALLERY SECTION */
+  .gallery-section {
+    width: 100%;
+    padding: 6rem 6vw;
+    display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 6rem;
+    background: #6A8E72;
   }
 
+  .gallery-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    border-right: 2px solid rgba(62, 42, 31, 0.4);
+    border-left: 2px solid rgba(62, 42, 31, 0.4);
+    padding: 0 2rem;
+  }
+
+  .gallery-item.reverse {
+    flex-direction: row-reverse;
+  }
+
+  /* TEXT */
   .gallery-text {
-    flex: unset;
+    flex: 0 0 380px;
+  }
+
+  .gallery-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    margin-bottom: 1.2rem;
+    font-weight: 400;
+    color: #3E2A1F;
+    line-height: 1.2;
+  }
+
+  .gallery-text h3 span {
+    display: block;
+    font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+    font-weight: 600;
+    color: #F5F3EE;
+  }
+
+  .gallery-text p {
+    font-size: 1.1rem;
+    line-height: 1.9rem;
+    color: #F5F3EE;
+    opacity: 0.9;
+  }
+
+  /* IMAGE */
+  .gallery-image {
+    flex: 0 0 500px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .gallery-img {
+    width: 100%;
     max-width: 500px;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  .gallery-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.22);
+  }
+
+  /* INTRO */
+  .gallery-intro {
+    padding: 0 2rem 4rem 2rem;
+    display: flex;
+    justify-content: center;
     text-align: center;
   }
 
-  .gallery-img {
-    max-width: 420px;
+  .intro-content {
+    max-width: 900px;
   }
 
-  .gallery-img {
-    max-width: 320px;
+  .gallery-intro h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.25;
+    color: #F5F3EE;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
   }
 
-}
+  .gallery-intro h2 span {
+    display: block;
+    font-weight: 600;
+    color: #3E2A1F;
+  }
 
+  .gallery-intro p {
+    font-size: 1.15rem;
+    line-height: 1.9rem;
+    color: #F5F3EE;
+    opacity: 0.88;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* TABLET */
+  @media (max-width: 1100px) {
+    .gallery-text {
+      flex: 0 0 300px;
+    }
+
+    .gallery-image {
+      flex: 0 0 420px;
+    }
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .gallery-section {
+      padding: 4rem 1.5rem;
+      gap: 4rem;
+    }
+
+    .gallery-item,
+    .gallery-item.reverse {
+      flex-direction: column;
+      gap: 2rem;
+      border: none;
+      border-top: 1px solid rgba(62, 42, 31, 0.3);
+      padding: 3rem 0 0 0;
+    }
+
+    .gallery-item:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .gallery-text {
+      flex: unset;
+      width: 100%;
+      text-align: center;
+    }
+
+    .gallery-text h3 {
+      font-size: 2rem;
+    }
+
+    .gallery-text h3 span {
+      font-size: 1.8rem;
+    }
+
+    .gallery-text p {
+      font-size: 1rem;
+      line-height: 1.7rem;
+    }
+
+    .gallery-image {
+      flex: unset;
+      width: 100%;
+    }
+
+    .gallery-img {
+      max-width: 100%;
+      border-radius: 14px;
+    }
+
+    .gallery-intro {
+      padding: 0 0 3rem 0;
+    }
+
+    .gallery-intro h2 {
+      font-size: 1.8rem;
+    }
+
+    .gallery-intro p {
+      font-size: 1rem;
+    }
+  }
 </style>

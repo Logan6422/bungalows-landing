@@ -1,11 +1,9 @@
 ---
-    import Icon from "../assets/icon.png"
-    import Image from "astro/components/Image.astro"
+import Icon from "../assets/icon.png"
+import Image from "astro/components/Image.astro"
 ---
-
 <nav class="navbar" id="inicio">
   <div class="nav-container">
-
     <div class="nav-brand">
       <Image src={Icon} alt="Logo" class="nav-icon" />
       <div class="nav-title-container">
@@ -14,147 +12,260 @@
       </div>
     </div>
 
-    <button 
-      class="nav-toggle" 
-      onclick="document.querySelector('.nav-links').classList.toggle('active')"
-    >
-      ☰
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
     </button>
 
-    <ul class="nav-links">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#ubicacion">Ubicación</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio" class="nav-link">Inicio</a></li>
+      <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+      <li><a href="#servicios" class="nav-link">Servicios</a></li>
+      <li><a href="#ubicacion" class="nav-link">Ubicación</a></li>
+      <li><a href="#contacto" class="nav-link">Contacto</a></li>
     </ul>
-
   </div>
+
+  <!-- Overlay para cerrar al hacer click afuera -->
+  <div class="nav-overlay" id="navOverlay"></div>
 </nav>
 
+<script>
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  const overlay = document.getElementById('navOverlay');
+
+  function openMenu() {
+    links?.classList.add('active');
+    overlay?.classList.add('active');
+    toggle?.classList.add('open');
+    toggle?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    links?.classList.remove('active');
+    overlay?.classList.remove('active');
+    toggle?.classList.remove('open');
+    toggle?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = links?.classList.contains('active');
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  overlay?.addEventListener('click', closeMenu);
+
+  // Cerrar al hacer click en un link
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>
+
 <style>
-
-html {
-  scroll-behavior: smooth;
-}
-.navbar {
-  width: 100%;
-  background-color: #6A8E72;
-  border-bottom: 3px solid white;
-}
-
-.nav-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2.5rem;
-  border-bottom: 1px solid #F5F3EE;
-}
-
-/* BRAND */
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.nav-icon {
-  width: 8vw;
-  height: auto;
-}
-
-.nav-title-container {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-
-.nav-name-primary {
-  font-size: 2.5rem;
-  font-weight: 200;
-  color: white;
-}
-
-.nav-name-secondary {
-  font-size: 2.5rem;
-  color: #3E2A1F;
-}
-
-/* LINKS */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 3rem;
-}
-
-
-.nav-links a {
-  text-decoration: none;
-  color: white;
-  font-size: 1.8rem;
-  transition: opacity 0.3s ease;
-}
-
-.nav-links a:hover {
-  opacity: 0.7;
-}
-
-.nav-links li {
-  position: relative;
-}
-
-.nav-links li::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0%;
-  height: 2px;
-  background: #3E2A1F;
-  transition: width 0.3s ease;
-}
-
-.nav-links li:hover::after {
-  width: 100%;
-}
-
-/* TOGGLE BUTTON (hidden desktop) */
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 3rem;
-  color: white;
-  cursor: pointer;
-}
-
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-
-  .nav-toggle {
-    display: block;
+  html {
+    scroll-behavior: smooth;
   }
 
-  .nav-links {
-    position: absolute;
-    top: 20vh;
-    right: 0;
-    background: #6A8E72;
+  .navbar {
     width: 100%;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 2rem 0;
-    display: none;
+    background-color: #6A8E72;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
 
-  
-
-  .nav-links.active {
+  .nav-container {
+    width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 2.5rem;
   }
 
-}
+  /* BRAND */
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    z-index: 200;
+  }
+
+  .nav-icon {
+    width: clamp(40px, 6vw, 70px);
+    height: auto;
+  }
+
+  .nav-title-container {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .nav-name-primary {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-weight: 200;
+    color: white;
+  }
+
+  .nav-name-secondary {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    color: #3E2A1F;
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* LINKS DESKTOP */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
+    transition: opacity 0.3s ease;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: #3E2A1F;
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  .nav-links a:hover {
+    opacity: 0.8;
+  }
+
+  /* HAMBURGER BUTTON */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 200;
+    width: 44px;
+    height: 44px;
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: white;
+    border-radius: 2px;
+    transition: transform 0.35s ease, opacity 0.35s ease, width 0.35s ease;
+    transform-origin: center;
+  }
+
+  /* Animación X al abrir */
+  .nav-toggle.open .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+    width: 0;
+  }
+  .nav-toggle.open .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* OVERLAY */
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 98;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav-overlay.active {
+    opacity: 1;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .nav-container {
+      padding: 0.8rem 1.5rem;
+    }
+
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-overlay {
+      display: block;
+    }
+
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: min(320px, 80vw);
+      height: 100dvh;
+      background: #4a6b52;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      padding: 6rem 2rem 2rem;
+      z-index: 99;
+      transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: -4px 0 30px rgba(0,0,0,0.2);
+      overflow-y: auto;
+    }
+
+    .nav-links.active {
+      right: 0;
+    }
+
+    .nav-links li {
+      width: 100%;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .nav-links li:first-child {
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 1.2rem 0.5rem;
+      font-size: 1.3rem;
+      color: #F5F3EE;
+    }
+
+    .nav-links a::after {
+      display: none;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: #d4b896;
+    }
+  }
 </style>

@@ -1,0 +1,103 @@
+---
+---
+
+<section class="map-section" id="ubicacion">
+
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps?q=San%20Javier,%20Santa%20Fe&output=embed"
+      width="100%"
+      height="100%"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <div class="map-text">
+    <h3>Ubicación</h3>
+    <p>
+      Ubicados en San Javier, a pocos metros del río, en un entorno natural
+      ideal para descansar y desconectar.
+    </p>
+  </div>
+
+</section>
+
+<style>
+
+/* MAP SECTION */
+.map-section {
+  background: #3E2A1F;
+  padding: 8rem 6vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+}
+
+/* MAP */
+.map-container {
+  flex: 0 0 520px;
+  height: 360px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.map-container:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 35px 80px rgba(0,0,0,0.35);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  filter: grayscale(20%) contrast(95%);
+}
+
+/* TEXT */
+.map-text {
+  flex: 0 0 420px;
+  color: #F5F3EE;
+}
+
+.map-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.map-text p {
+  font-size: 1.2rem;
+  line-height: 2rem;
+  opacity: 0.9;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+
+  .map-section {
+    flex-direction: column;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .map-container {
+    flex: unset;
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+  }
+
+  .map-text {
+    flex: unset;
+    max-width: 600px;
+  }
+
+}
+
+</style>

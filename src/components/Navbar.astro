@@ -1,0 +1,160 @@
+---
+    import Icon from "../assets/icon.png"
+    import Image from "astro/components/Image.astro"
+---
+
+<nav class="navbar" id="inicio">
+  <div class="nav-container">
+
+    <div class="nav-brand">
+      <Image src={Icon} alt="Logo" class="nav-icon" />
+      <div class="nav-title-container">
+        <span class="nav-name-primary">Bungalows</span>
+        <span class="nav-name-secondary">El Cuaco</span>
+      </div>
+    </div>
+
+    <button 
+      class="nav-toggle" 
+      onclick="document.querySelector('.nav-links').classList.toggle('active')"
+    >
+      ☰
+    </button>
+
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+<style>
+
+html {
+  scroll-behavior: smooth;
+}
+.navbar {
+  width: 100%;
+  background-color: #6A8E72;
+  border-bottom: 3px solid white;
+}
+
+.nav-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2.5rem;
+  border-bottom: 1px solid #F5F3EE;
+}
+
+/* BRAND */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-icon {
+  width: 8vw;
+  height: auto;
+}
+
+.nav-title-container {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.nav-name-primary {
+  font-size: 2.5rem;
+  font-weight: 200;
+  color: white;
+}
+
+.nav-name-secondary {
+  font-size: 2.5rem;
+  color: #3E2A1F;
+}
+
+/* LINKS */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+}
+
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.8rem;
+  transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.7;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #3E2A1F;
+  transition: width 0.3s ease;
+}
+
+.nav-links li:hover::after {
+  width: 100%;
+}
+
+/* TOGGLE BUTTON (hidden desktop) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 20vh;
+    right: 0;
+    background: #6A8E72;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    display: none;
+  }
+
+  
+
+  .nav-links.active {
+    display: flex;
+  }
+
+}
+</style>

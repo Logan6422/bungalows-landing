@@ -1,0 +1,116 @@
+---
+---
+
+<section class="contact-section" id="contacto">
+
+  <div class="contact-content">
+    <h2>Contacto</h2>
+    <p>
+      Estamos disponibles para responder tus consultas y ayudarte
+      a planificar tu próxima estadía.
+    </p>
+
+    <div class="contact-links">
+
+      <a 
+        href="https://wa.me/549XXXXXXXXXX" 
+        target="_blank" 
+        class="contact-btn"
+      >
+        WhatsApp
+      </a>
+
+      <a 
+        href="https://facebook.com/TUUSUARIO" 
+        target="_blank" 
+        class="contact-btn outline"
+      >
+        Facebook
+      </a>
+
+    </div>
+  </div>
+
+</section>
+
+<style>
+
+/* CONTACT SECTION */
+.contact-section {
+  background: #6A8E72;
+  padding: 8rem 2rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.contact-content {
+  max-width: 700px;
+}
+
+/* TITULO */
+.contact-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 400;
+  color: #F5F3EE;
+  margin-bottom: 1.5rem;
+}
+
+/* TEXTO */
+.contact-section p {
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  color: #F5F3EE;
+  opacity: 0.9;
+  margin-bottom: 3rem;
+}
+
+/* BOTONES */
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.contact-btn {
+  padding: 0.9rem 2.2rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  background: #3E2A1F;
+  color: #F5F3EE;
+  transition: all 0.4s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-4px);
+  background: #2a1c15;
+}
+
+/* BOTON SECUNDARIO */
+.contact-btn.outline {
+  background: transparent;
+  border: 1.5px solid #F5F3EE;
+}
+
+.contact-btn.outline:hover {
+  background: #F5F3EE;
+  color: #3E2A1F;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .contact-links {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+</style>

@@ -1,0 +1,160 @@
+---
+import Icon from "../assets/icon.png"
+import Image from "astro/components/Image.astro"
+---
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- IZQUIERDA -->
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <Image src={Icon} alt="Logo" class="footer-icon" />
+        <div class="footer-title">
+          <span>Bungalows</span>
+          <span>El Cuaco</span>
+        </div>
+      </div>
+
+      <div class="footer-legal">
+        <p>© 2026 @Log_4n. All rights reserved.</p>
+        <p>wachines@gmail.com</p>
+      </div>
+    </div>
+
+    <!-- CENTRO -->
+    <div class="footer-links">
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+
+    <!-- DERECHA -->
+    <div class="footer-company">
+      <h4>Desarrollado por</h4>
+      <p>Nombre Empresa</p>
+      <p>contacto@empresa.com</p>
+      <p>+54 9 0000 000000</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<style>
+
+/* FOOTER */
+.footer {
+  background: #3E2A1F;
+  padding: 4rem 4vw;
+  color: #F5F3EE;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* IZQUIERDA */
+.footer-brand {
+  max-width: 300px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.footer-icon {
+  width: 50px;
+}
+
+.footer-title span {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+}
+
+.footer-legal p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 0.4rem;
+}
+
+/* CENTRO */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 2rem;
+  border-left: 1px solid rgba(245,243,238,0.2);
+  border-right: 1px solid rgba(245,243,238,0.2);
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #F5F3EE;
+  font-size: 1.05rem;
+  letter-spacing: 1px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.footer-links a:hover {
+  opacity: 0.7;
+  transform: translateY(-2px);
+}
+
+/* DERECHA */
+.footer-company {
+  max-width: 250px;
+  justify-self: end;
+  text-align: right;
+}
+
+.footer-company h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-company p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .footer-brand,
+  .footer-company {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .footer-links {
+    border: none;
+    padding: 0;
+  }
+
+}
+
+</style>
